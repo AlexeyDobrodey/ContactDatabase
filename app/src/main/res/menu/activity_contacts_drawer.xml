@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Actions">
+        <menu>
+            <item
+                android:id="@+id/sign_out"
+                android:icon="@drawable/ic_power_off"
+                android:title="Sign Out" />
+        </menu>
+    </item>
+    <item android:title="OrderBy">
+        <menu>
+            <item
+                android:id="@+id/order_by_first_name"
+                android:title="First name" />
+            <item
+                android:id="@+id/order_by_phone"
+                android:title="Phone" />
+            <item
+                android:id="@+id/order_by_none"
+                android:title="None" />
+        </menu>
+    </item>
+</menu>

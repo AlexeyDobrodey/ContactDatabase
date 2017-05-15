@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "585301697085",
+    "project_id": "firebase-contactdatabase"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585301697085:android:5d1924dc7a9775c3",
+        "android_client_info": {
+          "package_name": "com.example.dobrodey.contactdatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "585301697085-e418qio1m4cj1js67cj1e5sev3rdhfcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dobrodey.contactdatabase",
+            "certificate_hash": "21d75cb5fb96e9632b0d112c1e12c6d29a5dd68b"
+          }
+        },
+        {
+          "client_id": "585301697085-pe50ipgqupafrfrltlcgd4rgrdm45hkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjbbCAXGxlsColXy46YtvalGTCs9YoIuw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
