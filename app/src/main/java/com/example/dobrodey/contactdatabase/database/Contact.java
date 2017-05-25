@@ -1,79 +1,46 @@
 package com.example.dobrodey.contactdatabase.database;
 
+import com.orm.SugarRecord;
+
 import java.io.Serializable;
-import java.util.UUID;
+import java.util.List;
 
 
-public class Contact  implements Serializable{
-    private String mFirstName;
-    private String mSecondName;
-    private String mPhone;
-    private String mEmail;
-    private String mUserId;
-    private UUID mUUID;
+public class Contact  extends SugarRecord implements Serializable{
+    String firstName;
+    String lastName;
+    String userID; // google id user which login
 
     public Contact() {
-        mUUID = UUID.randomUUID();
+
     }
 
-    public Contact(String firstName, String secondName, String phone, String email,
-                   String userId, UUID uuid) {
-        mFirstName = firstName;
-        mSecondName = secondName;
-        mPhone = phone;
-        mEmail = email;
-        mUserId = userId;
-        mUUID = uuid;
-    }
-    public Contact(String firstName, String secondName, String phone, String email, String userId) {
-        this(firstName, secondName, phone, email, userId, UUID.randomUUID());
+    public Contact(String firstName, String lastName, String userID) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userID = userID;
     }
 
     public String getFirstName() {
-        return mFirstName;
+        return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        mFirstName = firstName;
-    }
-
-    public String getSecondName() {
-        return mSecondName;
-    }
-
-    public void setSecondName(String secondName) {
-        mSecondName = secondName;
-    }
-
-    public String getPhone() {
-        return mPhone;
-    }
-
-    public void setPhone(String phone) {
-        mPhone = phone;
-    }
-
-    public String getEmail() {
-        return mEmail;
-    }
-
-    public void setEmail(String email) {
-        mEmail = email;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getUserId() {
-        return mUserId;
+        return userID;
     }
 
-    public void setUserId(String userId) {
-        mUserId = userId;
+    public List<ContactData> getPhones() {
+        return ContactData.find(ContactData.class, "type = ? and contact = ?",
+                new String[]{ContactData.TYPE_PHONE.toString(),getId().toString()});
     }
 
-    public UUID getID() {
-        return mUUID;
+    public List<ContactData> getEmails() {
+        return ContactData.find(ContactData.class, "type = ? and contact = ?",
+                new String[]{ContactData.TYPE_EMAIL.toString(),getId().toString()});
     }
 
-    public void setID(UUID UUID) {
-        mUUID = UUID;
-    }
 }

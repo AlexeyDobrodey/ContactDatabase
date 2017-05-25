@@ -18,7 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dobrodey.contactdatabase.R;
-import com.example.dobrodey.contactdatabase.database.ContactsDBSchema;
+import com.example.dobrodey.contactdatabase.database.Contact;
+import com.example.dobrodey.contactdatabase.fragments.ContactFragment;
 import com.example.dobrodey.contactdatabase.fragments.ListContactsFragment;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,7 +33,8 @@ import com.google.android.gms.common.api.Status;
 import com.squareup.picasso.Picasso;
 
 public class ContactsActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener,
+        ListContactsFragment.IOpenInfoContact{
 
     private static final String TAG = ContactsActivity.class.getName();
 
@@ -43,6 +45,8 @@ public class ContactsActivity extends AppCompatActivity
 
 
     private String mGoogleId = null;
+
+    private FragmentManager mFragmentManager;
     private ListContactsFragment mListContactsFragment;
 
     @Override
@@ -118,13 +122,17 @@ public class ContactsActivity extends AppCompatActivity
                     .error(R.mipmap.ic_launcher_round)
                     .into(mUserPhoto);
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            mListContactsFragment = ListContactsFragment.newInstance(mGoogleId);
 
-            fragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, mListContactsFragment)
-                    .commit();
+            mFragmentManager = getSupportFragmentManager();
+            mListContactsFragment = (ListContactsFragment) mFragmentManager.findFragmentById(R.id.fragment_container);
 
+            if(mListContactsFragment == null) {
+                mListContactsFragment = ListContactsFragment.newInstance(mGoogleId);
+
+                mFragmentManager.beginTransaction()
+                        .add(R.id.fragment_container, mListContactsFragment)
+                        .commit();
+            }
         }else{
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -169,9 +177,9 @@ public class ContactsActivity extends AppCompatActivity
         if (id == R.id.sign_out) {
             signOut();
         }else if(id == R.id.order_by_first_name) {
-            mListContactsFragment.updateOrder(ContactsDBSchema.ContactsTable.Cols.FIRST_NAME);
-        }else if(id == R.id.order_by_phone) {
-            mListContactsFragment.updateOrder(ContactsDBSchema.ContactsTable.Cols.PHONE);
+            mListContactsFragment.updateOrder("first_name");
+        }else if(id == R.id.order_by_last_name) {
+            mListContactsFragment.updateOrder("last_name");
         }else if(id == R.id.order_by_none) {
             mListContactsFragment.updateOrder(null);
         }
@@ -200,4 +208,11 @@ public class ContactsActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onOpenInfoContact(Contact contact) {
+        mFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, ContactFragment.newInstance(contact))
+                .addToBackStack(null)
+                .commit();
+    }
 }

@@ -14,7 +14,7 @@
             android:id="@+id/inputFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First name"
+            android:hint="@string/first_name_hint"
             />
     </android.support.design.widget.TextInputLayout>
 
@@ -26,31 +26,7 @@
             android:id="@+id/inputLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Second name"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <EditText
-            android:id="@+id/inputPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="@string/last_name_hint"
             />
     </android.support.design.widget.TextInputLayout>
 

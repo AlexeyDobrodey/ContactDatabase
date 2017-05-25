@@ -5,38 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="4dp"
-    app:cardCornerRadius="5dp"
-    >
+    app:cardCornerRadius="16dp"
 
-    <LinearLayout
+    >
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
+        android:padding="10dp"
         >
+        <ImageView
+            android:id="@+id/photoContact"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_contact"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
 
-        <TextView
-            android:id="@+id/firstSecondName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Скакун Алексей"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="21sp"
+            android:background="@drawable/circle"
             />
 
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="063-620-15-07"
-            />
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="skakun.alexeu@gmail.com"
-            />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/firstSecondName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Скакун Алексей"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="24sp"
+                android:layout_toRightOf="@+id/photoContact"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

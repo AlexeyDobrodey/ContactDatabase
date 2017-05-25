@@ -41,11 +41,6 @@ public class DialogInputContact extends DialogFragment{
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_input_contact, null);
         mInputFirstName = (EditText) view.findViewById(R.id.inputFirstName);
         mInputLastName = (EditText) view.findViewById(R.id.inputLastName);
-        mInputPhone = (EditText) view.findViewById(R.id.inputPhone);
-        mInputEmail = (EditText) view.findViewById(R.id.inputEmail);
-
-
-
 
         return new AlertDialog.Builder(getActivity())
                 .setView(view)
@@ -55,9 +50,7 @@ public class DialogInputContact extends DialogFragment{
                     public void onClick(DialogInterface dialog, int which) {
                         String firstName = mInputFirstName.getText().toString();
                         String lastName = mInputLastName.getText().toString();
-                        String phone = mInputPhone.getText().toString();
-                        String email = mInputEmail.getText().toString();
-                        Contact c = new Contact(firstName, lastName, phone, email, mUserId);
+                        Contact c = new Contact(firstName, lastName, mUserId);
                         sendResult(Activity.RESULT_OK, c);
                     }
                 })
